@@ -34,9 +34,8 @@ function moreValidate (input, fields) {
     iyr: arg => +arg >= 2010 && +arg <= 2020,
     eyr: arg => +arg >= 2020 && +arg <= 2030,
     hgt: arg => {
-      const regex = /^[0-9]+(cm|in)$/
       const num = +/^[0-9]+/.exec(arg)
-      if (!regex.test(arg)) return false
+      if (!/^[0-9]+(cm|in)$/.test(arg)) return false
       if (/(cm)$/.test(arg)) return num >= 150 && num <= 193
       else if (/(in)$/.test(arg)) return num >= 59 && num <= 76
     },

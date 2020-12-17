@@ -1,9 +1,8 @@
 import util from '../util.js'
 
 function binarySearch (string, target, end, start = 0) {
-  let mid
   for (let i = 0; i < string.length; i++) {
-    mid = Math.floor(start + (end - start) / 2)
+    let mid = Math.floor(start + (end - start) / 2)
     string[i] === target
       ? start = mid + 1
       : end = mid
@@ -23,8 +22,7 @@ function setup (input) {
 }
 
 function highestID (input) {
-  const ids = setup(input)
-  return Math.max(...ids)
+  return Math.max(...setup(input))
 }
 
 function yourID (input) {

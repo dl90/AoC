@@ -27,7 +27,6 @@ function multiSlope (input, slopes) {
     col = 0
     count = 0
   }
-
   return counts.reduce((pre, cur) => pre * cur, 1)
 }
 

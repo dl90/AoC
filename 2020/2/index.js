@@ -2,18 +2,14 @@ import util from '../util.js'
 
 function verify (input) {
   let count = 0
-  let min
-  let max
-  let ltr
-  let str
 
   for (let i = 0; i < input.length; i++) {
     const raw = input[i].split(' ')
     const minMax = /^[0-9]+-[0-9]+/.exec(raw)[0].split('-')
-    min = +minMax[0]
-    max = +minMax[1]
-    ltr = raw[1][0]
-    str = raw[2]
+    let min = +minMax[0]
+    let max = +minMax[1]
+    let ltr = raw[1][0]
+    let str = raw[2]
     const matched = str.match(new RegExp(ltr, 'g'))?.length
     if (matched >= min && matched <= max) count++
   }
@@ -22,18 +18,14 @@ function verify (input) {
 
 function verifyPos (input) {
   let count = 0
-  let idx1
-  let idx2
-  let ltr
-  let str
 
   for (let i = 0; i < input.length; i++) {
     const raw = input[i].split(' ')
     const minMax = /^[0-9]+-[0-9]+/.exec(raw)[0].split('-')
-    idx1 = +minMax[0] - 1
-    idx2 = +minMax[1] - 1
-    ltr = raw[1][0]
-    str = raw[2]
+    let idx1 = +minMax[0] - 1
+    let idx2 = +minMax[1] - 1
+    let ltr = raw[1][0]
+    let str = raw[2]
     if (str[idx1] !== str[idx2] && (str[idx1] === ltr || str[idx2] === ltr)) count++
   }
   return count
