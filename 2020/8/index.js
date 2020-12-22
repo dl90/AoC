@@ -9,15 +9,14 @@ function parse (input) {
 
 function findAcc (input) {
   const ops = parse(input)
-
   const visited = new Set()
   let acc = 0
+
   for (let i = 0; i < ops.length; i++) {
     if (visited.has(i)) return acc
-    visited.add(i)
-
     if (ops[i].op === 'acc') acc += ops[i].arg
     else if (ops[i].op === 'jmp') i += ops[i].arg - 1
+    visited.add(i)
   }
 }
 
@@ -40,10 +39,9 @@ function fixFindAcc (input) {
         opsHistory.push({ acc, visited: true })
         break
       }
-      visited.add(j)
-
       if (newOps[j].op === 'acc') acc += newOps[j].arg
       else if (newOps[j].op === 'jmp') j += newOps[j].arg - 1
+      visited.add(j)
     }
     if (!isInfinite) opsHistory.push({ acc, visited: false })
   }
